@@ -303,6 +303,10 @@ hr {
 
     .form-section {
         width: 50%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .result-section {
@@ -311,11 +315,26 @@ hr {
         border-top-left-radius: 0;
         border-bottom-left-radius: 4rem;
     }
+
 }
 
 @media(min-width:1024px) {
     main {
         max-width: 900px;
+    }
+
+    .form-section {
+        padding: 1rem;
+    }
+
+    .header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    #Clear {
+        margin: 0;
     }
 
     form article {
@@ -324,8 +343,8 @@ hr {
     }
 }
 
-@media(min-width:1440px) {
+@media(min-width:1200px) {
     main {
-        max-width: 1100px;
+        max-width: 1000px;
     }
 }
