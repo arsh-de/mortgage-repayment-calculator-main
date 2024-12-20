@@ -27,21 +27,21 @@ function calculate() {
     let p = parseFloat(document.querySelector("#amount").value);
     let y = parseFloat(document.querySelector("#years").value);
 
-    document.querySelector(".empty-result").classList.add("hidden");
-    document.querySelector(".result").classList.remove("hidden");
+    document.querySelector(".empty-result").classList.add("none");
+    document.querySelector(".result").classList.remove("none");
 
     if (repayment.checked) {
         r = r / 1200; // Convert annual rate to monthly rate
         y = y * 12;   // Convert years to months
         monthly = (p * r * Math.pow(1 + r, y)) / (Math.pow(1 + r, y) - 1);
         const total = monthly * y;
-        document.querySelector(".monthly").innerText = '£' + monthly.toFixed(3).toLocaleString("en-US");
-        document.querySelector(".total").innerText = '£' + total.toFixed(3).toLocaleString("en-US");
+        document.querySelector(".monthly").innerText = '£' + monthly.toFixed(2).toLocaleString("en-US");
+        document.querySelector(".total").innerText = '£' + total.toFixed(2).toLocaleString("en-US");
     } else if (intersetOnly.checked) {
         monthly = p * (r / 1200); // Interest-only formula
         const total = monthly * y * 12; // Total interest-only payment
-        document.querySelector(".monthly").innerText = '£' + monthly.toFixed(3).toLocaleString("en-US");
-        document.querySelector(".total").innerText = '£' + total.toFixed(3).toLocaleString("en-US");
+        document.querySelector(".monthly").innerText = '£' + monthly.toFixed(2).toLocaleString("en-US");
+        document.querySelector(".total").innerText = '£' + total.toFixed(2).toLocaleString("en-US");
     }
 }
 
@@ -116,8 +116,8 @@ function clearAll() {
     document.querySelectorAll(".radio").forEach(radio => {
         radio.classList.remove("radio-selected");
     });
-    document.querySelector(".empty-result").classList.remove("hidden");
-    document.querySelector(".result").classList.add("hidden");
+    document.querySelector(".empty-result").classList.remove("none");
+    document.querySelector(".result").classList.add("none");
 
 }
 button.addEventListener("click", (e) => {

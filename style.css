@@ -79,7 +79,7 @@ form div {
 .percent-container,
 .years-container {
     position: relative;
-    margin-bottom: 1rem;
+    margin-bottom: .5rem;
 }
 
 .error {
@@ -95,7 +95,7 @@ form div {
     font-size: 1rem;
     padding: .5rem;
     cursor: pointer;
-    font-weight: 700;
+    font-weight: 500;
     border-radius: .35rem;
     color: var(--Slate900);
     border: 1px solid var(--Slate500);
@@ -113,7 +113,7 @@ input:focus {
 .icon {
     font-size: 1rem;
     font-weight: 700;
-    padding: 7px;
+    padding: 7px 10px;
     position: absolute;
     color: var(--Slate700);
     background-color: var(--Slate100);
@@ -125,7 +125,7 @@ input:focus {
 }
 
 .amount-icon {
-    top: 29px;
+    top: 29.5px;
     left: 1px;
     border-top-left-radius: .25rem;
     border-bottom-left-radius: .25rem;
@@ -133,7 +133,7 @@ input:focus {
 
 .years-icon,
 .percent-icon {
-    top: 29px;
+    top: 29.5px;
     right: .5px;
     border-top-right-radius: .25rem;
     border-bottom-right-radius: .25rem;
@@ -205,6 +205,8 @@ button img {
 
 .result-section {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     padding: 2rem;
     background-color: var(--Slate900);
 }
@@ -286,6 +288,10 @@ hr {
 }
 
 .hidden {
+    visibility: hidden;
+}
+
+.none {
     display: none;
 }
 
@@ -327,7 +333,6 @@ hr {
 @media(min-width:1024px) {
     main {
         max-width: 900px;
-        max-height: 50%;
     }
 
     .header {
@@ -351,4 +356,4 @@ hr {
     }
 }
 
-@media(min-width:1200px) {}
+/* @media(min-width:1200px) {} */
