@@ -13,6 +13,10 @@
     --font-family: "Plus Jakarta Sans", serif;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     display: flex;
@@ -34,7 +38,7 @@ main {
 }
 
 h1 {
-    font-size: larger;
+    font-size: 1.75rem;
     color: var(--Slate900);
     margin: 0 0 .5rem;
 }
@@ -52,8 +56,9 @@ h1 {
 }
 
 form {
+    width: 100%;
     display: flex;
-    padding: 1.5rem;
+    padding: 2rem;
     justify-content: center;
     flex-direction: column;
 }
@@ -64,7 +69,7 @@ form div {
 }
 
 .label {
-    font-size: small;
+    font-size: 1rem;
     font-weight: 500;
     padding-bottom: .5rem;
     color: var(--Slate700);
@@ -87,12 +92,13 @@ form div {
 #amount,
 #years,
 #percent {
+    font-size: 1rem;
     padding: .5rem;
+    cursor: pointer;
     font-weight: 700;
-    border-radius: .25rem;
+    border-radius: .35rem;
     color: var(--Slate900);
     border: 1px solid var(--Slate500);
-    cursor: pointer;
 }
 
 #amount {
@@ -101,14 +107,14 @@ form div {
 
 input:focus {
     border: 1px solid var(--Lime) !important;
-    outline: 2px solid var(--Lime);
+    outline: none;
 }
 
 .icon {
-    font-size: small;
-    padding: 7.75px 10px;
-    position: absolute;
+    font-size: 1rem;
     font-weight: 700;
+    padding: 7px;
+    position: absolute;
     color: var(--Slate700);
     background-color: var(--Slate100);
 }
@@ -119,15 +125,15 @@ input:focus {
 }
 
 .amount-icon {
-    top: 24.75px;
-    left: .5px;
+    top: 29px;
+    left: 1px;
     border-top-left-radius: .25rem;
     border-bottom-left-radius: .25rem;
 }
 
 .years-icon,
 .percent-icon {
-    top: 24.75px;
+    top: 29px;
     right: .5px;
     border-top-right-radius: .25rem;
     border-bottom-right-radius: .25rem;
@@ -136,7 +142,7 @@ input:focus {
 .radio {
     gap: .5rem;
     display: flex;
-    padding: .5rem 1rem;
+    padding: .75rem;
     cursor: pointer;
     flex-direction: row;
     align-items: center;
@@ -170,7 +176,7 @@ input[type="radio"]:checked {
 }
 
 .type {
-    font-size: small;
+    font-size: 1rem;
     font-weight: 700;
     color: var(--Slate900);
     cursor: pointer;
@@ -199,7 +205,7 @@ button img {
 
 .result-section {
     display: flex;
-    padding: 1.5rem;
+    padding: 2rem;
     background-color: var(--Slate900);
 }
 
@@ -227,7 +233,7 @@ button img {
 
 .complete-heading {
     margin: 0;
-    font-size: 18px;
+    font-size: 1.5rem;
     font-weight: 700;
     color: var(--White);
 }
@@ -243,6 +249,7 @@ button img {
 }
 
 .result-shown {
+    margin-top: 1rem;
     padding: 1rem;
     border-radius: .5rem;
     border-top: 3px solid var(--Lime);
@@ -251,7 +258,7 @@ button img {
 
 .result-shown p {
     margin: 0;
-    font-size: small;
+    font-size: 1rem;
     color: var(--Slate500);
 }
 
@@ -286,7 +293,7 @@ hr {
     border-color: var(--Lime);
 }
 
-.icon-selected1 {
+.icon-selected {
     background-color: var(--Lime);
 }
 
@@ -303,7 +310,6 @@ hr {
 
     .form-section {
         width: 50%;
-        height: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -321,10 +327,7 @@ hr {
 @media(min-width:1024px) {
     main {
         max-width: 900px;
-    }
-
-    .form-section {
-        padding: 1rem;
+        max-height: 50%;
     }
 
     .header {
@@ -338,13 +341,14 @@ hr {
     }
 
     form article {
+        width: 100%;
         display: flex;
-        gap: 1rem;
+        gap: 10%;
+    }
+
+    form article div {
+        width: 45%;
     }
 }
 
-@media(min-width:1200px) {
-    main {
-        max-width: 1000px;
-    }
-}
+@media(min-width:1200px) {}

@@ -3,14 +3,23 @@ const intersetOnly = document.querySelector("#interest-only")
 const repayment = document.querySelector("#repayment")
 const clear = document.querySelector("#Clear")
 
+const inputs = document.querySelectorAll("input");
 
-button.addEventListener("click", (e) => {
-    e.preventDefault();
-    empty();
-    calculate();
-    checked();
-})
-clear.addEventListener("click", clearAll);
+inputs.forEach(input => {
+    input.addEventListener("focus", () => {
+        const icon = input.previousElementSibling; // Get the icon before the input
+        if (icon && icon.classList.contains("icon")) {
+            icon.classList.add("icon-selected");
+        }
+    });
+
+    input.addEventListener("blur", () => {
+        const icon = input.previousElementSibling;
+        if (icon && icon.classList.contains("icon")) {
+            icon.classList.remove("icon-selected");
+        }
+    });
+});
 
 function calculate() {
     let monthly = 0;
@@ -18,26 +27,24 @@ function calculate() {
     let p = parseFloat(document.querySelector("#amount").value);
     let y = parseFloat(document.querySelector("#years").value);
 
-
     document.querySelector(".empty-result").classList.add("hidden");
     document.querySelector(".result").classList.remove("hidden");
 
     if (repayment.checked) {
-        r = r / 1200;
-        y = y * 12;
+        r = r / 1200; // Convert annual rate to monthly rate
+        y = y * 12;   // Convert years to months
         monthly = (p * r * Math.pow(1 + r, y)) / (Math.pow(1 + r, y) - 1);
-        monthly = monthly.toFixed(3);
-        document.querySelector(".monthly").innerText = '£' + monthly;
-        document.querySelector(".total").innerText = '£' + monthly * y;
+        const total = monthly * y;
+        document.querySelector(".monthly").innerText = '£' + monthly.toFixed(3).toLocaleString("en-US");
+        document.querySelector(".total").innerText = '£' + total.toFixed(3).toLocaleString("en-US");
+    } else if (intersetOnly.checked) {
+        monthly = p * (r / 1200); // Interest-only formula
+        const total = monthly * y * 12; // Total interest-only payment
+        document.querySelector(".monthly").innerText = '£' + monthly.toFixed(3).toLocaleString("en-US");
+        document.querySelector(".total").innerText = '£' + total.toFixed(3).toLocaleString("en-US");
     }
-    else if (intersetOnly.checked) {
-        monthly = p * (r / 1200);
-        monthly = monthly.toFixed(3);
-        document.querySelector(".monthly").innerText = '£' + monthly;
-        document.querySelector(".total").innerText = '£' + monthly * y;
-    }
-
 }
+
 function checked() {
     if (repayment.checked) {
         document.querySelector(".radio1").classList.add("radio-selected")
@@ -106,8 +113,19 @@ function clearAll() {
     document.querySelectorAll("input").forEach(i => {
         i.style.borderColor = "hsl(200, 26%, 54%)";
     })
-
+    document.querySelectorAll(".radio").forEach(radio => {
+        radio.classList.remove("radio-selected");
+    });
     document.querySelector(".empty-result").classList.remove("hidden");
     document.querySelector(".result").classList.add("hidden");
 
 }
+button.addEventListener("click", (e) => {
+    e.preventDefault();
+    empty();
+    calculate();
+})
+
+repayment.addEventListener("click", checked);
+intersetOnly.addEventListener("click", checked);
+clear.addEventListener("click", clearAll);
